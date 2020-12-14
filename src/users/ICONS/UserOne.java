@@ -113,7 +113,7 @@ public class UserOne extends JFrame implements ActionListener {
     setUndecorated(true);
     setVisible(true);
     try {
-    	Socket socketClient = new Socket("localhost", 2001);
+    	Socket socketClient = new Socket("localhost", 2002);
     	writer = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
     }catch(Exception e) {}
     
