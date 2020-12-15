@@ -129,13 +129,14 @@ public class UserOne extends JFrame implements ActionListener,Runnable {
     	}catch(Exception e){
     		
     	}
+    	t1.setText(" ");
     }
   
     public void run() {
     	try {
     		String msg = " ";
-    		while((msg = reader.readLine()) ! = null) {
-    			a1.append(msg);
+    		while((msg = reader.readLine()) != null) {
+    			a1.append(msg + "\n");
     		}
     	}catch(Exception e) {
     		

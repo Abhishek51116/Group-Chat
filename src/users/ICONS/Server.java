@@ -49,7 +49,7 @@ public class Server implements Runnable {
 			Server server = new Server(socket);
 			Thread thread = new Thread(server);
 			thread.start();	
-			ss.close();
+			//ss.close();
 		}
 	}
 }
