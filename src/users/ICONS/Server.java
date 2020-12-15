@@ -8,6 +8,7 @@ public class Server implements Runnable {
 	Socket socket;
 	public static Vector client = new Vector();
 	public Server(Socket socket) {
+		
 		try {
 			this.socket = socket;
 		}catch(Exception e) {}
@@ -42,13 +43,13 @@ public class Server implements Runnable {
 	
 		ServerSocket ss = new ServerSocket(2001);
 		
-		System.out.println("Waiting for client to connect");
+		System.out.println("Waiting for client to connect");		
 		while(true) {
 			Socket socket = ss.accept();
 			Server server = new Server(socket);
 			Thread thread = new Thread(server);
 			thread.start();	
-			
+			ss.close();
 		}
 	}
 }

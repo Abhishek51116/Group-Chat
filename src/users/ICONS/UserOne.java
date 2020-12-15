@@ -6,7 +6,7 @@ import java.io.*;
 import java.net.*;
 
 
-public class UserOne extends JFrame implements ActionListener {
+public class UserOne extends JFrame implements ActionListener,Runnable {
     JPanel p1;
     JTextField t1;
     JButton b1;
@@ -15,7 +15,7 @@ public class UserOne extends JFrame implements ActionListener {
     boolean typing = false;
     
     BufferedWriter writer;
-    
+    BufferedReader reader;
     UserOne(){
     
         p1 = new JPanel();
@@ -113,8 +113,9 @@ public class UserOne extends JFrame implements ActionListener {
     setUndecorated(true);
     setVisible(true);
     try {
-    	Socket socketClient = new Socket("localhost", 2002);
+    	Socket socketClient = new Socket("localhost", 2001);
     	writer = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
+    	reader = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
     }catch(Exception e) {}
     
     }
@@ -130,9 +131,21 @@ public class UserOne extends JFrame implements ActionListener {
     	}
     }
   
+    public void run() {
+    	try {
+    		String msg = " ";
+    		while((msg = reader.readLine()) ! = null) {
+    			a1.append(msg);
+    		}
+    	}catch(Exception e) {
+    		
+    	}
+    }
+    
     public static void main(String[] args){
-            new UserOne();
-         
+            UserOne one = new UserOne();
+         Thread t1 = new Thread(one);
+         t1.start();
      
     }
     
