@@ -6,7 +6,7 @@ import java.io.*;
 import java.net.*;
 
 
-public class UserOne extends JFrame implements ActionListener,Runnable {
+public class UserTwo extends JFrame implements ActionListener,Runnable {
     JPanel p1;
     JTextField t1;
     JButton b1;
@@ -16,7 +16,7 @@ public class UserOne extends JFrame implements ActionListener,Runnable {
     
     BufferedWriter writer;
     BufferedReader reader;
-    UserOne(){
+    UserTwo(){
     
         p1 = new JPanel();
         p1.setLayout(null);
@@ -109,7 +109,7 @@ public class UserOne extends JFrame implements ActionListener,Runnable {
     
     setLayout(null);
     setSize(500,600);
-    setLocation(0,0);    
+    setLocation(510,0);    
     setUndecorated(true);
     setVisible(true);
     try {
@@ -121,7 +121,7 @@ public class UserOne extends JFrame implements ActionListener,Runnable {
     }
 
     public void actionPerformed(ActionEvent ae){
-    	String str = "UserOne: "+t1.getText();
+    	String str = "UserTwo: "+t1.getText();
     	try {
     		writer.write(str);
     		writer.write("\r\n");
@@ -144,7 +144,7 @@ public class UserOne extends JFrame implements ActionListener,Runnable {
     }
     
     public static void main(String[] args){
-            UserOne one = new UserOne();
+            UserTwo one = new UserTwo();
          Thread t1 = new Thread(one);
          t1.start();
      
